@@ -148,13 +148,3 @@ Acknowledgments
 We would like to acknowledge the chess libraries and resources that helped us build this engine:
 python-chess – A popular Python library for handling chess moves, board state, and legal moves.
 Pygame – A library used to create the graphical user interface.
-yaml
-Copy code
-
----
-
-This markdown-formatted **README.md** is ready to be added to your project’s root directory. It includes an overview of the project, setup instructions, folder structure, usage instructions, and guidelines for contributing. 
-
-Feel free to adapt this based on your specific needs or further details of your project.
-
-
