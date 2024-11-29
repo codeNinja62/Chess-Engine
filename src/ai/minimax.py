@@ -2,6 +2,7 @@
 
 import random
 from src.ai.evaluation import evaluate_board
+from src.ai.move_generator import apply_move  # Assuming apply_move is defined in move_generator
 from src.ai.move_generator import generate_moves
 
 MAX_DEPTH = 3  # Depth of the search tree
@@ -33,7 +34,7 @@ def minimax(board, depth, alpha, beta, maximizing_player, color):
     if maximizing_player:
         max_eval = float('-inf')
         for move in moves:
-            new_board = apply_move(board, move, color)  # A function to apply the move (not shown here)
+            new_board = apply_move(board, move, color, promotion='queen')  # A function to apply the move (not shown here)
             evaluation, _ = minimax(new_board, depth-1, alpha, beta, False, 'black')
             if evaluation > max_eval:
                 max_eval = evaluation
@@ -46,7 +47,7 @@ def minimax(board, depth, alpha, beta, maximizing_player, color):
     else:  # Minimizing player (the opponent)
         min_eval = float('inf')
         for move in moves:
-            new_board = apply_move(board, move, color)  # Apply the move for the opponent
+            new_board = apply_move(board, move, color, promotion='queen')  # Apply the move for the opponent
             evaluation, _ = minimax(new_board, depth-1, alpha, beta, True, 'white')
             if evaluation < min_eval:
                 min_eval = evaluation
