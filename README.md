@@ -10,49 +10,65 @@ This is a chess engine built as part of a group project. It includes an AI that 
 - **User Interface**: A graphical interface to display the chessboard, pieces, and manage user interactions.
 - **Board Setup**: Easily set up any board position to analyze or study the game.
 
-## Project Structure
+## Folder Structure and Organization
 
-The project is organized into several directories:
+The project is organized into the following directories:
 
-chess-engine/
+### `src/`
+This directory contains all the source code for the chess engine.
 
-├── .gitignore
+- **`ai/`**: Contains all AI-related logic, including:
+  - Move evaluation
+  - Minimax algorithm
+  - Alpha-Beta pruning
+  - Game heuristics and decision-making strategies
 
-├── README.md
+- **`game/`**: Core game logic, which handles:
+  - Board state management
+  - Move validation
+  - Game rules (e.g., check, checkmate, castling, etc.)
 
-├── LICENSE
+- **`gui/`**: Code for the graphical user interface (GUI), including:
+  - Rendering the chessboard and chess pieces
+  - Handling user input (e.g., piece movements, menu interactions)
+  - Displaying game status and messages
 
-├── docs/ # Documentation
+- **`utils/`**: Contains utility functions and helper code used across the project:
+  - Constants (e.g., piece types, board dimensions)
+  - Reusable utility functions (e.g., logging, data parsing, helpers)
 
-├── src/ # Source code for the chess engine
+### `tests/`
+This directory holds all the tests for various components of the engine.
 
-│ ├── ai/ # AI-related code (e.g., Minimax, evaluations)
+- **`ai_tests/`**: Unit and integration tests for the AI logic and algorithms:
+  - Ensures correct move evaluation, AI decision-making, and algorithm functionality.
 
-│ ├── game/ # Core game logic (board state, move validation)
+- **`game_tests/`**: Tests for the core game logic, including:
+  - Game rules (e.g., castling, en passant, checkmate detection)
+  - Board state management and move validation
 
-│ ├── gui/ # GUI code (graphics, UI interactions)
+- **`gui_tests/`**: Tests for the GUI, ensuring proper functionality and user interaction:
+  - Verifies that the interface responds correctly to user inputs and displays the correct game state.
 
-│ └── utils/ # Utility functions (e.g., logging, helpers)
+- **`utils_tests/`**: Tests for utility functions in the `utils/` directory:
+  - Ensures that all helper functions work as expected and produce correct results.
 
-├── tests/ # Unit tests and integration tests
+### `assets/`
+This directory contains all media files used in the project.
 
-│ ├── ai_tests/ # Tests related to the AI logic
+- **`images/`**: Chess piece images/icons for rendering in the GUI:
+  - Each piece (king, queen, bishop, knight, rook, pawn) has an image for both white and black pieces.
 
-│ ├── game_tests/ # Tests for game rules and logic
+- **`sounds/`** (optional): Contains sound files for optional game sound effects:
+  - E.g., move sounds, check sounds, or other gameplay sounds.
 
-│ ├── gui_tests/ # Tests for GUI functionality
+### `docs/`
+This directory is for internal documentation that explains the structure and logic of the project.
 
-│ └── utils_tests/ # Tests for utility functions
-
-├── assets/ # Graphics, icons, and other media files
-
-│ ├── images/ # Chess piece images/icons
-
-│ └── sounds/ # Optional sound effects
-
-└── .github/ # GitHub-specific configurations (optional)
-
-└── workflows/ # GitHub Actions for CI/CD, if you decide to use it
+- Use this folder for:
+  - Architecture overviews
+  - Detailed explanations of algorithms (e.g., Minimax, Alpha-Beta pruning)
+  - Game rules and logic explanations
 
 
 ## Getting Started
@@ -126,23 +142,6 @@ git push origin feature-branch-name
 Create a Pull Request (PR) to merge your changes into the dev branch.
 License
 This project is licensed under the MIT License - see the LICENSE file for details.
-
-Folder Structure and Organization
-src/
-ai/: Contains all the AI logic, including move evaluation, Minimax algorithm, and any game heuristics.
-game/: Handles game rules, board state, and move validation.
-gui/: Code for the graphical user interface, including rendering the chessboard, pieces, and handling user input.
-utils/: Contains utility functions, constants, and other reusable code snippets.
-tests/
-ai_tests/: Tests for the AI logic and algorithms.
-game_tests/: Tests for game rules and mechanics (e.g., castling, en passant, checkmate detection).
-gui_tests/: Tests for the GUI functionality and interaction.
-utils_tests/: Tests for utility functions.
-assets/
-images/: Chess piece images for rendering on the GUI.
-sounds/ (optional): If you’re adding sound effects to the game, store them here.
-docs/
-Use this folder for any internal documentation, such as architecture overviews, algorithms used (e.g., Minimax), or a detailed explanation of the game rules.
 
 Acknowledgments
 We would like to acknowledge the chess libraries and resources that helped us build this engine:
