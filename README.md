@@ -73,16 +73,16 @@ You need to have **Python** and **Git** installed on your local machine.
    git clone https://github.com/yourusername/chess-engine.git
    cd chess-engine
 (Optional) If you're using a virtual environment (recommended):
-bash
-Copy code
+```bash
 python -m venv venv
 source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+```
 Installing Dependencies
 Install the necessary dependencies:
 
-bash
-Copy code
+```bash
 pip install -r requirements.txt
+```
 Note: If you don’t have a requirements.txt yet, you'll need to create one by listing the Python packages your project needs (e.g., pygame for the GUI, or numpy for any math-heavy operations in AI).
 
 If you're using specific libraries for the GUI or AI, ensure they're installed and available.
@@ -90,22 +90,22 @@ If you're using specific libraries for the GUI or AI, ensure they're installed a
 Running the Project
 After setting up, you can run the chess engine with the following command:
 
-bash
-Copy code
+```bash
 python src/gui/game_window.py
+```
 This will launch the graphical interface where you can interact with the chessboard, pieces, and play against the AI.
 
 Alternatively, to just use the AI in a text-based environment (without the GUI):
 
-bash
-Copy code
+```bash
 python src/ai/play_against_ai.py
+```
 Testing
 To run tests, simply execute:
 
-bash
-Copy code
+```bash
 pytest
+```
 This will run all unit and integration tests to ensure the engine and GUI are working as expected.
 
 Contributing
@@ -114,15 +114,15 @@ We welcome contributions! If you'd like to contribute to the project, please fol
 Fork the repository to your GitHub account.
 Clone your fork to your local machine.
 Create a new branch for your feature:
-bash
-Copy code
+```bash
 git checkout -b feature-branch-name
+```
 Make your changes, commit them, and push the branch to your fork:
-bash
-Copy code
+```bash
 git add .
 git commit -m "Brief description of your changes"
 git push origin feature-branch-name
+```
 Create a Pull Request (PR) to merge your changes into the dev branch.
 License
 This project is licensed under the MIT License - see the LICENSE file for details.
