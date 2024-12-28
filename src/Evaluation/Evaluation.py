@@ -10,26 +10,25 @@ class ChessEvaluation:
             'Q': 900,
             'K': 2000,
         }
-        self.KING_SAFETY_PENALTY = 40
+        self.KING_SAFETY_PENALTY = 20
         self.PAWN_SHIELD_BONUS = 30
         self.TEMPO_BONUS = 10
         self.CONNECTIVITY_BONUS = 5
         self.ATTACK_UNIT_BONUS = 20
-
     def evaluate(self, board):
         material_score = self.evaluate_material(board)
         king_safety_score = self.evaluate_king_safety(board)
         center_control_score = self.evaluate_center_control(board)
         space_score = self.evaluate_space(board)
         connectivity_score = self.evaluate_connectivity(board)
-        trapped_pieces_score = self.evaluate_trapped_pieces(board)
+        # trapped_pieces_score = self.evaluate_trapped_pieces(board)
         tempo_score = self.evaluate_tempo(board)
         king_tropism_score = self.evaluate_king_tropism(board)
         virtual_mobility_score = self.evaluate_virtual_mobility(board)
         pawn_storm_score = self.evaluate_pawn_storm(board)
         attack_units_score = self.evaluate_attack_units(board)
         total_score = (material_score + king_safety_score + center_control_score + space_score +
-                       connectivity_score + trapped_pieces_score + tempo_score + king_tropism_score +
+                       connectivity_score + tempo_score + king_tropism_score +
                        virtual_mobility_score + pawn_storm_score + attack_units_score)
         return total_score
 
@@ -101,38 +100,38 @@ class ChessEvaluation:
                             connectivity_score -= self.CONNECTIVITY_BONUS
         return connectivity_score
 
-    def evaluate_trapped_pieces(self, board):
-        trapped_score = 0
-        for square in chess.SQUARES:
-            piece = board.piece_at(square)
-            if piece:
-                if self.is_trapped(board, square):
-                    penalty = 150
-                    if piece.color == chess.WHITE:
-                        trapped_score -= penalty
-                        print(f"White {piece.symbol()} on {chess.square_name(square)} is trapped (-{penalty})")
-                    else:
-                        trapped_score += penalty
-                        print(f"Black {piece.symbol()} on {chess.square_name(square)} is trapped (+{penalty})")
-        return trapped_score
+    # def evaluate_trapped_pieces(self, board):
+    #     trapped_score = 0
+    #     for square in chess.SQUARES:
+    #         piece = board.piece_at(square)
+    #         if piece:
+    #             if self.is_trapped(board, square):
+    #                 penalty = 150
+    #                 if piece.color == chess.WHITE:
+    #                     trapped_score -= penalty
+    #                     print(f"White {piece.symbol()} on {chess.square_name(square)} is trapped (-{penalty})")
+    #                 else:
+    #                     trapped_score += penalty
+    #                     print(f"Black {piece.symbol()} on {chess.square_name(square)} is trapped (+{penalty})")
+    #     return trapped_score
 
 
-    def is_trapped(self, board, square):
+    # def is_trapped(self, board, square):
         
-        piece = board.piece_at(square)
-        if not piece:
-            return False
+    #     piece = board.piece_at(square)
+    #     if not piece:
+    #         return False
 
-        # Generate all legal moves for the current board position
-        for move in board.legal_moves:
-            if move.from_square == square:
-                # Simulate the move and check if it's safe
-                board.push(move)
-                is_safe = not board.is_check()  # Simplified: Ensure move doesn't result in check
-                board.pop()  # Undo the move
-                if is_safe:
-                    return False  # Piece has at least one safe move
-        return True
+    #     # Generate all legal moves for the current board position
+    #     for move in board.legal_moves:
+    #         if move.from_square == square:
+    #             # Simulate the move and check if it's safe
+    #             board.push(move)
+    #             is_safe = not board.is_check()  # Simplified: Ensure move doesn't result in check
+    #             board.pop()  # Undo the move
+    #             if is_safe:
+    #                 return False  # Piece has at least one safe move
+    #     return True
 
 
 
@@ -201,8 +200,4 @@ class ChessEvaluation:
 
     def is_attacking_king_zone(self, square, king_square):
         return self.calculate_distance(square, king_square) <= 2
-
-board = chess.Board()
-evaluator = ChessEvaluation()
-score = evaluator.evaluate(board)
 
